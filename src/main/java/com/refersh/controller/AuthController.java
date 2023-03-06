@@ -1,5 +1,7 @@
 package com.refersh.controller;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,7 @@ public class AuthController {
 	private JwtServiceDetail userDetailsService;
 	@Autowired
 	private UsersRepo usersRepo;
+	Random r=new Random(1000);
 
 	@PostMapping(ApiUrls.REGISTRATION)
 	public String addUsers(@RequestBody Users users) {
@@ -74,6 +77,15 @@ public class AuthController {
 			return new ResponseEntity<>("invalid Users", HttpStatus.UNAUTHORIZED);
 		}
 
+	}
+	@PostMapping("/ForgetPassword")
+	public ResponseEntity<?> generateOtp(@RequestParam String email)
+	{
+		System.out.println("Email:"+email);
+		
+		
+		int opt=r.nextInt(99999);
+		return new ResponseEntity<>(opt,HttpStatus.OK);
 	}
 
 }

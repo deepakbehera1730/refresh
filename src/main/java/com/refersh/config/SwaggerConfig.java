@@ -42,6 +42,7 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(getInfo()).securityContexts(securityContext()).securitySchemes(Arrays.asList(apikeys())).select().apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build();
 	}
 
+	@SuppressWarnings("deprecation")
 	private ApiInfo getInfo() {
 	
 		return new ApiInfo("Refresh Token", "Using Spring Boot" ,"Designed By Deepak Behera","Email:Beherad592@gmail.com","mobile no:8626042810", "Api Urls	","Apis");  

@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers(ApiUrls.LOGIN,ApiUrls.REGISTRATION ,ApiUrls.REFRESH_TOKEN).permitAll().antMatchers(ApiUrls.SWAGGER_URLS).permitAll().anyRequest()
+		http.csrf().disable().authorizeRequests().antMatchers(ApiUrls.LOGIN,ApiUrls.REGISTRATION ,ApiUrls.REFRESH_TOKEN,"/ForgetPassword").permitAll().antMatchers(ApiUrls.SWAGGER_URLS).permitAll().anyRequest()
 				.authenticated().and().exceptionHandling().authenticationEntryPoint(entryPoint).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
